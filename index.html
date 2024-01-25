@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>목걸이 판매 홈페이지</title>
+
+    <!-- 부트스트랩 CDN 링크 -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome CDN 링크 (아이콘 사용을 위해) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+    <style>
+        /* 마우스 오버 시 이미지 확대 효과 */
+        .card-img-top {
+            transition: transform 0.5s;
+        }
+
+        .card:hover .card-img-top {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 네비게이션 바 -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand mx-auto" href="#">목걸이 판매 사이트</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">홈</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">제품</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">주문하기</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">고객센터</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 메인 콘텐츠 -->
+    <div class="container mt-4">
+        <h1>인기 목걸이 제품</h1>
+
+        <!-- 제품 카드 예시 -->
+        <div class="card-deck mt-4">
+            <div class="card">
+                <img src="https://m.wingbling.co.kr/web/product/big/202109/3fdc986776bfbb1b0e6a0f46d5bae50b.jpg" class="card-img-top" alt="목걸이 이미지">
+                <div class="card-body">
+                    <h5 class="card-title">예시 목걸이 1</h5>
+                    <p class="card-text">이 목걸이는 아주 멋져요!</p>
+                    <p class="card-text"><small class="text-muted">$19.99</small></p>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <button class="btn btn-outline-secondary btn-sm" type="button" id="button-minus1">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                        <input type="text" class="form-control text-center" value="1" id="quantity1" readonly>
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary btn-sm" type="button" id="button-plus1">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <a href="#" class="btn btn-primary mt-2">주문하기</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://wingbling.co.kr/web/product/big/202102/3522fa99b6c76fda13171df23b640ac7.jpg" class="card-img-top" alt="목걸이 이미지">
+                <div class="card-body">
+                    <h5 class="card-title">예시 목걸이 2</h5>
+                    <p class="card-text">다양한 스타일을 제공합니다.</p>
+                    <p class="card-text"><small class="text-muted">$24.99</small></p>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <button class="btn btn-outline-secondary btn-sm" type="button" id="button-minus2">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                        <input type="text" class="form-control text-center" value="1" id="quantity2" readonly>
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary btn-sm" type="button" id="button-plus2">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <a href="#" class="btn btn-primary mt-2">주문하기</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 부트스트랩, jQuery, Popper.js, Font Awesome CDN 링크 -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
+
+    <!-- 수량 버튼 동작 스크립트 -->
+    <script>
+        $(document).ready(function () {
+            // 목걸이 1
+            $("#button-plus1").click(function () {
+                var currentValue = parseInt($("#quantity1").val());
+                $("#quantity1").val(currentValue + 1);
+            });
+
+            $("#button-minus1").click(function () {
+                var currentValue = parseInt($("#quantity1").val());
+                if (currentValue > 1) {
+                    $("#quantity1").val(currentValue - 1);
+                }
+            });
+
+            // 목걸이 2
+            $("#button-plus2").click(function () {
+                var currentValue = parseInt($("#quantity2").val());
+                $("#quantity2").val(currentValue + 1);
+            });
+
+            $("#button-minus2").click(function () {
+                var currentValue = parseInt($("#quantity2").val());
+                if (currentValue > 1) {
+                    $("#quantity2").val(currentValue - 1);
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
